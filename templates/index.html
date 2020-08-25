@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        {% for current in currents
+            if current["quantity"] != 0
+        %}
+        <tbody>
+            <tr>
+                <th>{{ current["symbol"]}}</th>
+                <th>{{ current["name"] }}</th>
+                <th>{{ current["quantity"]}}</th>
+                <th>{{ current["price"] }}</th>
+                <th>{{ current["total"] }}</th>
+            </tr>
+        </tbody>
+        {% endfor %}
+        <tbody>
+            <tr>
+                <th>CASH</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>{{ cash }}</th>
+            </tr>
+        </tbody>
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th> {{ gtotal }}</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+{% endblock %}

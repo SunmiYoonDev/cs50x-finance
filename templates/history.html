@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Unit Price</th>
+                <th>Total</th>
+                <th>Transacted</th>
+            </tr>
+        </thead>
+        {% for trade in trades %}
+        <tbody>
+            <tr>
+                <th>{{ trade["symbol"]}}</th>
+                <th>{{ trade["name"] }}</th>
+                <th>{{ trade["quantity"]}}</th>
+                <th>{{ trade["unit_price"] }}</th>
+                <th>{{ trade["total"] }}</th>
+                <th>{{ trade["transacted_date"] }}</th>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

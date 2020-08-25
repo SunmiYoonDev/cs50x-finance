@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <form action="/sell" method="post">
+        <select name="symbols" id="symbols" onfocus="this.selectedIndex = -1;">
+
+            {% for row in rows
+                if row["quantity"] != 0
+            %}
+           <option value="{{ row["symbol"] }}">{{ row["symbol"] }}</option>
+           {% endfor %}
+        </select>
+        <div class="form-group">
+            <input class="form-control" name="shares" placeholder="Shares" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Sell</button>
+    </form>
+
+{% endblock %}
